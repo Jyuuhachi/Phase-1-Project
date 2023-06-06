@@ -141,10 +141,6 @@ body {
     background-color: white;
     justify-content:right;
 }
-.arrows {
-
-}
-
 #edit-button {
   display: flex;
 }
