@@ -8,14 +8,19 @@
         </script>
     </head>
     <body>
+        <form id="reviews-form">
+            <input class="reviews-input" type="text" name="review" id="review" placeholder="Add a review">
+            <button id="submit-button" type="submit">Edit</button>
+            <button id="edit-button" type="submit">Submit</button>
+        </form>
         <!--Title-->
-        <h1 id="web-title">rateMyBootcamp</h1>
+        <h1 id="page-title">rateMyBootcamp</h1>
         <!--This image-container div holds the whole bootcamp card in its element-->
-        <div class="bootcamp-container">
+        <div id="image-container">
             <!--This image-card holds the key information about the bootcamp object-->
-            <div class="bootcamp-card">
-                <h2 id="bootcamp-title">Flatiron School</h2>
-                <img id="bootcamp-image" alt="Title of Bootcamp">
+            <div id="image-card">
+                <h2 id="bootcamp-name">Flatiron School</h2>
+                <img id="card-image" alt="Title of Bootcamp">
                 <!--Below is the likes section-->
                 <div class="likes-section">
                     <span id="likes-count">0 likes</span>
@@ -23,11 +28,6 @@
                 </div>
                 <!--Below is the comments section-->
                 <ul id="reviews-list" class="reviews">This is a sample review</ul>
-                <form id="reviews-form">
-                    <input class="reviews-input" type="text" name="review" id="review" placeholder="Add a review">
-                    <button id="submit-button" type="submit">Edit</button>
-                    <button id="edit-button" type="submit">Submit</button>
-                </form>
             </div>
         </div>
     </body>
