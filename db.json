@@ -1,0 +1,28 @@
+{
+    "bootcamps": [
+      {
+        "id": 1,
+        "name": "Flatiron School",
+        "likes": 123,
+        "image": "image-placeholder.jpg"
+      }
+    ],
+    "comments": [
+      {
+        "id": 1,
+        "imageId": 1,
+        "content": "Project week is awesome!"
+      },
+      {
+        "id": 2,
+        "imageId": 1,
+        "content": "Javascript, HTML, and CSS are super fun!"
+      },
+      {
+        "id": 3,
+        "imageId": 1,
+        "content": "I feel connected to the server"
+      }
+    ]
+  }
+  
