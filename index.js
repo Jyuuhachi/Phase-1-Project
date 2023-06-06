@@ -6,11 +6,9 @@ fetch(bootcampURL)
 
 function displayBootcamp(bootcamp){
     const card = document.querySelector(".image-card")
-    card.querySelector("bootcamp-name").textContent = bootcamp.name
+    //card.querySelector("bootcamp-name").textContent = bootcamp.name
     console.log(bootcamp)
 }
-
-    
     
 /* function addComment(comment){}
     
