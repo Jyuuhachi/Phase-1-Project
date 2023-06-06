@@ -2,120 +2,153 @@
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
-  }
+}
+h3 {
+    position:absolute;
+    bottom: 325px;
+
+}
   
-  body {
+body {
     padding: 20px;
     text-align: center;
     background-color: #fafafa;
-  }
+}
   
-  #page-title {
+#page-title {
+    margin-bottom: 20px;
+}
   
-  }
-  
-  .image-container {
+.image-container {
     width: 100%;
     display: flex;
     justify-content: center;
-  }
+}
   
-  .image-card {
+.image-card {
     width: 300px;
     border: 1px solid #00000020;
     border-radius: 2px;
     text-align: left;
     background-color: white;
-  }
+}
+#butts {
+    display:flex;
+    justify-content:center;
+    width: 300px;
+}
+#image {
+    width: 260px;
+    border: 1px solid #00000020;
+    border-radius: 2px;
+    background-color: white;
+}
   
-  #bootcamp-name {
+#bootcamp-name {
     text-align: left;
     padding: 15px 10px;
     font-size: 0.9rem;
     font-weight: 600;
     color: #000000dd;
-  }
+}
   
-  #likes-section {
+#likes-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
-  }
+}
   
-  #likes-count {
+#likes-count {
     font-size: 0.9rem;
     font-weight: 600;
-  }
+}
   
-  #like-button {
+#like-button {
     color: rgb(255, 127, 80);
     font-size: 1.5rem;
     border: none;
     background: none;
     transition: color 300ms;
     cursor: pointer;
-  }
+}
   
-  .comments {
+.comments {
     list-style-type: none;
     margin-left: 0;
     padding-left: 10px;
     font-size: 0.85rem;
-  }
+}
   
-  .comments li {
+.comments li {
     margin: 2px 0;
     letter-spacing: 0.2px;
-  }
-  .comment-form {
+}
+.comment-form {
     width: 100%;
     border-top: 1px solid #00000020;
     padding: 10px;
     margin-top: 10px;
-  }
+}
   
   
   
-  .comment-input {
+.comment-input {
     width: 83%;
     border: none;
     font-size: 0.8rem;
-  }
+}
   
-  .comment-input:focus {
+.comment-input:focus {
     outline: none;
-  }
+}
   
-  .comment-button {
+.comment-button {
     border: none;
     font-size: 0.8rem;
     font-weight: 600;
     color: rgb(92, 114, 238);
     cursor: pointer;
     transition: color 300ms;
-  }
+}
   
-  .comment-button:hover {
+.comment-button:hover {
     color: rgb(37, 68, 245);
-  }
+}
   
-  .comment-button:active {
+.comment-button:active {
     color: rgb(127, 146, 250);
-  }
+}
   
-  .comment-button:focus {
+.comment-button:focus {
     outline: none;
-  }
+}
   
-  .arrows {
+#arrow-left {
+    width: 20px;
+    border: 1px solid #00000020;
+    border-radius: 2px;
+    text-align: justify;
+    background-color: white;
+    justify-content:left;
+}
   
-  }
+#arrow-right {
+    width: 20px;
+    border: 1px solid #00000020;
+    border-radius: 2px;
+    text-align: justify;
+    background-color: white;
+    justify-content:right;
+}
+.arrows {
+
+}
+
+#edit-button {
+  display: flex;
+}
   
-  #edit-button {
-  
-  }
-  
-  #submit-button {
-    
-  }
+#submit-button {
+    display: flex;
+}
