@@ -124,15 +124,30 @@ body {
     outline: none;
 }
   
-  .arrows {
-    color: red;
+#arrow-left {
+    width: 20px;
+    border: 1px solid #00000020;
+    border-radius: 2px;
+    text-align: justify;
+    background-color: white;
+    justify-content:left;
+}
   
-  }
-  
-  
-  #edit-button {
-  
-  }
+#arrow-right {
+    width: 20px;
+    border: 1px solid #00000020;
+    border-radius: 2px;
+    text-align: justify;
+    background-color: white;
+    justify-content:right;
+}
+.arrows {
+
+}
+
+#edit-button {
+  display: flex;
+}
   
 #submit-button {
     display: flex;
