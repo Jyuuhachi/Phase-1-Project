@@ -18,15 +18,15 @@ function getJson() {
     
     }
     
-    function addBootCamp(bootCamp) {
+    function addBootcamp(bootcamp) {
     
     }
     
-    function edit bootCamp(bootCamp) {
+    function editBootcamp(bootcamp) {
     
     }
     
-    function caroselBootCamps(direction) {
+    function carouselBootcamps(direction) {
     
     }
     

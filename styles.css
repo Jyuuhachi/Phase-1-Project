@@ -135,6 +135,7 @@ body {
     text-align: justify;
     background-color: white;
     justify-content:left;
+    cursor: pointer;
 }
   
 #arrow-right {
@@ -144,6 +145,7 @@ body {
     text-align: justify;
     background-color: white;
     justify-content:right;
+    cursor: pointer;
 }
 
 #edit-button {
