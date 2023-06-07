@@ -4,25 +4,58 @@
         "id": 1,
         "name": "Flatiron School",
         "likes": 123,
-        "image": "image-placeholder.jpg"
-      }
-    ],
-    "comments": [
+        "image": "image-placeholder.jpg",
+        "comments": [
       {
         "id": 1,
-        "imageId": 1,
         "content": "Project week is awesome!"
       },
       {
         "id": 2,
-        "imageId": 1,
         "content": "Javascript, HTML, and CSS are super fun!"
       },
       {
         "id": 3,
-        "imageId": 1,
         "content": "I feel connected to the server"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "General Assembly",
+    "likes": 27,
+    "image": "General-Assembly-logo.png",
+    "comments":[
+      {
+        "id": 1,
+        "content": "I didn't go here"
+      },
+      {
+        "id": 2,
+        "content": "They're in the flatiron building!"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Fullstack Academy",
+    "likes": 2,
+    "image": "fullstack-academy-logo-square-lg.png",
+    "comments": [
+      {
+        "id": 1,
+        "content": "Only taught me back-end pain..."
+      },
+      {
+        "id": 2,
+        "content": "my front-end was never the same afterwards..."
+      },
+      {
+        "id": 3,
+        "content": "she code on my stack till it's full"
       }
     ]
   }
   
+]
+}
