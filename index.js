@@ -128,8 +128,8 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
             alert("Bad things!");
             console.log(error.message)
         })
-    
     }
+    
     function carouselGetComments() {
         const commentList = []
         for (i = 0; i <= bootcampList[bootcampListPosition]['comments'].length; i++) {
@@ -137,3 +137,13 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
         }
         return commentList
     }
+
+   document.querySelector('#comment-section').addEventListener("submit",event => {
+    event.preventDefault()
+    const comment=document.querySelector("#comment-line").value
+    const commentList=document.querySelector("#comment-list")
+    const li=document.createElement('li')
+    li.textContent=comment
+    commentList.append(li)
+    document.querySelector("#comment-form").reset()
+   })
