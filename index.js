@@ -9,9 +9,8 @@ fetch(URL)
     bootcampDisplay["src"] = bootcampImage
     bootcampComments = bootcampList[0].comments
     bootcampComments.forEach(addComment)
-
-
 })
+
 const leftArrow = document.getElementById("arrow-left")
 const rightArrow = document.getElementById("arrow-right")
 leftArrow.addEventListener("click", e => carouselBootcamps("left"))
@@ -27,15 +26,21 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     }
     
     function addNewComment(comment) {
-    
     }
     
-    function addBootcamp(bootcamp) {
-    
+    function addBootcamp(bootcamp){
+        const submitButton = document.querySelector("#submit-button")
+        submitButton.addEventListener("submit",()=>{
+            document.querySelector("#form-name").textContent = bootcamp.name
+            document.querySelector("#form-image").src = bootcampImage
+        })
     }
     
     function editBootcamp(bootcamp) {
-    
+        const editButton = document.querySelector("#edit-button")
+        editButton.addEventListener("submit", ()=>{
+            
+        })
     }
     
     function carouselBootcamps(direction) {
@@ -119,8 +124,8 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-            }
-            body: JSON.stringify(bootcampList[bootcamplistPosiition.likes]),
+            },
+            body: JSON.stringify(bootcampList[bootcamplistPosiition["likes"]])
         };
         fetch(URL, postLikes)
         .then(likeResponse=>likeResponse.json())
@@ -128,8 +133,8 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
             alert("Bad things!");
             console.log(error.message)
         })
-    
     }
+
     function carouselGetComments() {
         const commentList = []
         for (i = 0; i <= bootcampList[bootcampListPosition]['comments'].length; i++) {
