@@ -14,8 +14,8 @@ fetch(URL)
 })
 const leftArrow = document.getElementById("arrow-left")
 const rightArrow = document.getElementById("arrow-right")
-leftArrow.addEventListener("click", e => carouselBootcamp("left"))
-rightArrow.addEventListener("click", e => carouselBootcamp("right"))
+leftArrow.addEventListener("click", e => carouselBootcamps("left"))
+rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     
     
     function addComment(comment) {
