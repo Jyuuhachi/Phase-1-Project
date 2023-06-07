@@ -30,9 +30,11 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     
     function addBootcamp(){
         const submitButton = document.querySelector("#submit-button")
-        submitButton.addEventListener("submit",()=>{
+        submitButton.addEventListener("submit",(e)=>{
+            e.preventDefault()
             document.querySelector("bootcamp-name").textContent = document.querySelector("form-name").value
             document.querySelector("image").src = document.querySelector("form-image").value
+            e.target.reset()
         })
     }
     
@@ -40,8 +42,8 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
         const editButton = document.querySelector("#edit-button")
         editButton.addEventListener("submit", ()=>{
             //when i click on edit, the name and url should appear in the input box for me to edit
-            document.querySelector("form-name") = bootcampList[bootcampListPosition].name
-            document.querySelector("form-image") = bootcampList[bootcampListPosition].image
+            document.querySelector("form-name").textContent = bootcampList[bootcampListPosition].name
+            document.querySelector("form-image").src = bootcampList[bootcampListPosition].image
         })
     }
     
@@ -120,14 +122,14 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     
     function updateLikes() {
         const button = document.querySelector("#likes-button")
-        button.addEventListener("click", renderLikes(e))
+        button.addEventListener("click", renderLikes)
         const postLikes = {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
             },
-            body: JSON.stringify(bootcampList[bootcamplistPosiition["likes"]])
+            body: JSON.stringify(bootcampList[bootcampListPosition["likes"]])
         };
         fetch(URL, postLikes)
         .then(likeResponse=>likeResponse.json())
