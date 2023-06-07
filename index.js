@@ -18,6 +18,15 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     
     
     function addComment(comment) {
+        document.querySelector('#comment-section').addEventListener("submit",event => {
+            event.preventDefault()
+            const comment=document.querySelector("#comment-line").value
+            const commentList=document.querySelector("#comment-list")
+            const li=document.createElement('li')
+            li.textContent=comment
+            commentList.appendChild(li)
+            document.querySelector("#comment-form").reset()
+           })
     
     }
     
