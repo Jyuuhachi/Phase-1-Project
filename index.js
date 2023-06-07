@@ -39,7 +39,9 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     function editBootcamp(bootcamp) {
         const editButton = document.querySelector("#edit-button")
         editButton.addEventListener("submit", ()=>{
-
+            //when i click on edit, the name and url should appear in the input box for me to edit
+            document.querySelector("form-name") = bootcampList[bootcampListPosition].name
+            document.querySelector("form-image") = bootcampList[bootcampListPosition].image
         })
     }
     
