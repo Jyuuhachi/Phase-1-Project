@@ -1,8 +1,3 @@
-function getJson() {
-    fetch('')
-    .then (resp => resp.json())
-    .then (data => (data.forEach(boink) => renderData(data)
-    }
 const bootcampList = []
 let bootcampListPosition = 0
 fetch(URL)
