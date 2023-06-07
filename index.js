@@ -39,9 +39,7 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     function editBootcamp(bootcamp) {
         const editButton = document.querySelector("#edit-button")
         editButton.addEventListener("submit", ()=>{
-            
 
-            
         })
     }
     
