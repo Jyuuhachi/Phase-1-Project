@@ -28,17 +28,19 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     function addNewComment(comment) {
     }
     
-    function addBootcamp(bootcamp){
+    function addBootcamp(){
         const submitButton = document.querySelector("#submit-button")
         submitButton.addEventListener("submit",()=>{
-            document.querySelector("#form-name").textContent = bootcamp.name
-            document.querySelector("#form-image").src = bootcampImage
+            document.querySelector("bootcamp-name").textContent = document.querySelector("form-name").value
+            document.querySelector("image").src = document.querySelector("form-image").value
         })
     }
     
     function editBootcamp(bootcamp) {
         const editButton = document.querySelector("#edit-button")
         editButton.addEventListener("submit", ()=>{
+            
+
             
         })
     }
