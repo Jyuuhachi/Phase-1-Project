@@ -104,8 +104,30 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
             }
         }
     }
+
+    function renderLikes(){
+        let numLikes = card.querySelector("#likes-count").textContent
+        let numberLike = parseInt(numLikes) + 1
+        card.querySelector("#likes-count").textContent = `${numberLike} likes`
+    }
     
     function updateLikes() {
+        const button = document.querySelector("#likes-button")
+        button.addEventListener("click", renderLikes(e))
+        const postLikes = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+            body: JSON.stringify(bootcampList[bootcamplistPosiition.likes]),
+        };
+        fetch(URL, postLikes)
+        .then(likeResponse=>likeResponse.json())
+        .catch(function(error){
+            alert("Bad things!");
+            console.log(error.message)
+        })
     
     }
     function carouselGetComments() {
