@@ -43,6 +43,13 @@ const leftArrow = document.getElementById("arrow-left")
 const rightArrow = document.getElementById("arrow-right")
 leftArrow.addEventListener("click", e => carouselBootcamps("left"))
 rightArrow.addEventListener("click", e => carouselBootcamps("right"))
+    const likeButton = document.querySelector("#likes-button")
+    likeButton.addEventListener("click", (e)=>{
+        let numLikes = card.querySelector("#likes-count").textContent
+        numberLike = numLikes +1 
+        card.querySelector("#likes-count").textContent = `${numberLike} likes`
+
+    })
     
     function addComment(comment) {
     //create new li and setAttribute(identifier, idNum) and appendChild to ul on HTML with comment as it's textContent
@@ -74,9 +81,19 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     
     }
     
-    function editBootcamp(bootcamp) {
-    
-    }
+function editbootCamp(bootCamp){
+    const editButton = document.querySelector("#edit-button")
+    editButton.addEventListener("submit",(edit)=>{
+        edit.preventDefault()
+
+
+    })
+}
+function renderLikes(e){
+        let numLikes = card.querySelector("#likes-count").textContent
+        let numberLike = parseInt(numLikes) + 1
+        card.querySelector("#likes-count").textContent = `${numberLike} likes`
+}
     
     function carouselBootcamps(direction) {
         /* function that is passed a direction in as a parameter moves through an index
@@ -175,9 +192,27 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
         }
     }
     
-    function updateLikes() {
-    
-    }
+
+function updateLikes(){ 
+    const button = document.querySelector("#likes-button")
+    button.addEventListener("click", renderLikes(e))
+    const postLikes = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+            "Accept": "application/json",
+        }
+        body: JSON.stringify({
+            bootcampList[bootcamplistPosiition].likes:"",
+        }),
+    };
+    fetch(URL, postLikes)
+    .then(likeResponse=>likeResponse.json())
+    .catch(function(error){
+        alert("Bad things!");
+        console.log(error.message)
+    })
+}
     function carouselGetComments() {
         /* function that goes through the commentsList and finds the comments
            that belong to the selected bootcamp
@@ -190,4 +225,3 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
             }
             return commentList
         }
-    
