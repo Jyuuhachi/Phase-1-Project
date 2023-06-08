@@ -34,13 +34,6 @@ fetch(dataURL + '/bootcamps')
         }
         commentList.forEach(addComment)
     })
-    
-    
-    fetch(dataURL + '/comments')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-    })
 })
 
 const leftArrow = document.getElementById("arrow-left")
@@ -142,7 +135,6 @@ editButton.addEventListener("submit", e=>{
     }
     
     function editBootcamp(event) {
-        console.log('proveme')
             //when i click on edit, the name and url should appear in the input box for me to edit
             bootcampList[bootcampListPosition].name = event.target['bootcamp-name'].value
             bootcampList[bootcampListPosition].image = event.target['bootcamp-image'].value
