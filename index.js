@@ -166,44 +166,11 @@ editButton.addEventListener("submit", e=>{
             //check if the current index position is the start of the array,
             //if so set the index position to the end of the array
             if (bootcampListPosition === 0) {
-                bootcampListPosition = (bootcampList.length - 1)
-                const bootcampLogo = document.getElementById("image")
-                bootcampLogo['src'] = bootcampList[bootcampListPosition].image
-                const nameTextbox = document.getElementById("form-name")
-                const imageTextbox = document.getElementById("form-image")
-                nameTextbox['placeholder'] = bootcampList[bootcampListPosition].name
-                imageTextbox['placeholder'] = bootcampList[bootcampListPosition].image
-                const comments = carouselGetComments()
-                const likes = bootcampList[bootcampListPosition].likes
-                renderLikes()
-                const commentList = document.getElementById("comment-list")
-                //while loop to remove all comments from the DOM
-                while (commentList.firstChild) {
-                    commentList.removeChild(commentList.firstChild)
-                }
-                comments.forEach(addComment)
-                const name = document.getElementById("bootcamp-name")
-                name.textContent = bootcampList[bootcampListPosition].name               
+                changeBootcamp()
             }
             else {
                 bootcampListPosition -= 1
-                const bootcampLogo = document.getElementById("image")
-                bootcampLogo['src'] = bootcampList[bootcampListPosition].image
-                const nameTextbox = document.getElementById("form-name")
-                const imageTextbox = document.getElementById("form-image")
-                nameTextbox['placeholder'] = bootcampList[bootcampListPosition].name
-                imageTextbox['placeholder'] = bootcampList[bootcampListPosition].image
-                const comments = carouselGetComments()
-                const likes = bootcampList[bootcampListPosition].likes
-                renderLikes()
-                const commentList = document.getElementById("comment-list")
-                //while loop to remove all current comments displayed in the DOM
-                while (commentList.firstChild) {
-                    commentList.removeChild(commentList.firstChild)
-                }
-                comments.forEach(addComment)
-                const name = document.getElementById("bootcamp-name")
-                name.textContent = bootcampList[bootcampListPosition].name
+                changeBootcamp()
             }
         }
         //check the direction
@@ -212,43 +179,11 @@ editButton.addEventListener("submit", e=>{
             //if so set the index position to the start of the array
             if (bootcampListPosition === (bootcampList.length - 1)) {
                 bootcampListPosition = 0
-                const bootcampLogo = document.getElementById("image")
-                bootcampLogo['src'] = bootcampList[bootcampListPosition].image
-                const nameTextbox = document.getElementById("form-name")
-                const imageTextbox = document.getElementById("form-image")
-                nameTextbox['placeholder'] = bootcampList[bootcampListPosition].name
-                imageTextbox['placeholder'] = bootcampList[bootcampListPosition].image
-                const comments = carouselGetComments()
-                const likes = bootcampList[bootcampListPosition].likes
-                renderLikes()
-                const commentList = document.getElementById("comment-list")
-                //while loop to remove all comments from the DOM
-                while (commentList.firstChild) {
-                    commentList.removeChild(commentList.firstChild)
-                }
-                comments.forEach(addComment)
-                const name = document.getElementById("bootcamp-name")
-                name.textContent = bootcampList[bootcampListPosition].name
+                changeBootcamp()
             }
             else {
                 bootcampListPosition += 1
-                const bootcampLogo = document.getElementById("image")
-                bootcampLogo['src'] = bootcampList[bootcampListPosition].image
-                const nameTextbox = document.getElementById("form-name")
-                const imageTextbox = document.getElementById("form-image")
-                nameTextbox['placeholder'] = bootcampList[bootcampListPosition].name
-                imageTextbox['placeholder'] = bootcampList[bootcampListPosition].image
-                const comments = carouselGetComments()
-                const likes = bootcampList[bootcampListPosition].likes
-                renderLikes()
-                const commentList = document.getElementById("comment-list")
-                //while loop to remove all comments from the DOM
-                while (commentList.firstChild) {
-                    commentList.removeChild(commentList.firstChild)
-                }
-                comments.forEach(addComment)
-                const name = document.getElementById("bootcamp-name")
-                name.textContent = bootcampList[bootcampListPosition].name
+                changeBootcamp()
             }
         }
     }
@@ -288,3 +223,23 @@ function updateLikes(){
             }
             return commentList
         }
+
+function changeBootcamp() {
+    const bootcampLogo = document.getElementById("image")
+    bootcampLogo['src'] = bootcampList[bootcampListPosition].image
+    const nameTextbox = document.getElementById("form-name")
+    const imageTextbox = document.getElementById("form-image")
+    nameTextbox['placeholder'] = bootcampList[bootcampListPosition].name
+    imageTextbox['placeholder'] = bootcampList[bootcampListPosition].image
+    const comments = carouselGetComments()
+    const likes = bootcampList[bootcampListPosition].likes
+    renderLikes()
+    const commentList = document.getElementById("comment-list")
+    //while loop to remove all comments from the DOM
+    while (commentList.firstChild) {
+        commentList.removeChild(commentList.firstChild)
+    }
+    comments.forEach(addComment)
+    const name = document.getElementById("bootcamp-name")
+    name.textContent = bootcampList[bootcampListPosition].name
+}
