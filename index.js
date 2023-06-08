@@ -52,7 +52,16 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     })
     
     function addComment(comment) {
-    //create new li and setAttribute(identifier, idNum) and appendChild to ul on HTML with comment as it's textContent
+          //create new li and setAttribute(identifier, idNum) and appendChild to ul on HTML with comment as it's textContent
+        document.querySelector('#comment-section').addEventListener("submit",event => {
+            event.preventDefault()
+            const comment=document.querySelector("#comment-line").value
+            const commentList=document.querySelector("#comment-list")
+            const li=document.createElement('li')
+            li.textContent=comment
+            commentList.appendChild(li)
+            document.querySelector("#comment-form").reset()
+           })
     }
     
     function deleteComment(comment) {
@@ -77,23 +86,80 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     //add new comment to the database using dataURL + bootcampList[bootcampListPosition].id
     }
     
-    function addBootcamp(bootcamp) {
-    
+    function addBootcamp(){
+        const submitButton = document.querySelector("#submit-button")
+        submitButton.addEventListener("submit",(e)=>{
+            e.preventDefault()
+            document.querySelector("bootcamp-name").textContent = document.querySelector("form-name").value
+            document.querySelector("image").src = document.querySelector("form-image").value
+            e.target.reset()
+
+            const postBootcamp = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify(bootcampList[bootcampListPosition].name, bootcampList[bootcampListPosition].image)
+            };
+            fetch(URL, postBootcamp)
+            .then(bootcampResp => bootcampResp.json())
+            .catch(function(error){
+                alert("Bad things!")
+            }
+        })
     }
     
-function editbootCamp(bootCamp){
-    const editButton = document.querySelector("#edit-button")
-    editButton.addEventListener("submit",(edit)=>{
-        edit.preventDefault()
+    function editBootcamp(bootcamp) {
+        const editButton = document.querySelector("#edit-button")
+        editButton.addEventListener("submit", ()=>{
+            //when i click on edit, the name and url should appear in the input box for me to edit
+            document.querySelector("form-name").textContent = bootcampList[bootcampListPosition].name
+            document.querySelector("form-image").src = bootcampList[bootcampListPosition].image
 
-
-    })
-}
+            const postEdit = {
+                method: "PATCH",
+                headers:{
+                    "Content-Type":"application/json",
+                    "Accept":"application/json",
+                }
+                body: JSON.stringify(bootcampList[bootcampListPosition].name, bootcampList[bootcampListPosition].image)
+            };
+            fetch(URL, postEdit)
+            .then(editResp=>editResp.json())
+            .catch(function(error){
+                alert("Bad things!")
+            });
+        });
+    }
 function renderLikes(e){
         let numLikes = card.querySelector("#likes-count").textContent
         let numberLike = parseInt(numLikes) + 1
         card.querySelector("#likes-count").textContent = `${numberLike} likes`
 }
+
+    function editBootcamp(bootcamp) {
+        const editButton = document.querySelector("#edit-button")
+        editButton.addEventListener("submit", ()=>{
+            //when i click on edit, the name and url should appear in the input box for me to edit
+            document.querySelector("form-name").textContent = bootcampList[bootcampListPosition].name
+            document.querySelector("form-image").src = bootcampList[bootcampListPosition].image
+
+            const postEdit = {
+                method: "PATCH",
+                headers:{
+                    "Content-Type":"application/json",
+                    "Accept":"application/json",
+                }
+                body: JSON.stringify(bootcampList[bootcampListPosition].name, bootcampList[bootcampListPosition].image)
+            };
+            fetch(URL, postEdit)
+            .then(editResp=>editResp.json())
+            .catch(function(error){
+                alert("Bad things!")
+            });
+        });
+    }
     
     function carouselBootcamps(direction) {
         /* function that is passed a direction in as a parameter moves through an index
@@ -191,8 +257,13 @@ function renderLikes(e){
             }
         }
     }
-    
 
+function renderLikes(e){
+        let numLikes = card.querySelector("#likes-count").textContent
+        let numberLike = parseInt(numLikes) + 1
+        card.querySelector("#likes-count").textContent = `${numberLike} likes`
+}
+    
 function updateLikes(){ 
     const button = document.querySelector("#likes-button")
     button.addEventListener("click", renderLikes(e))
