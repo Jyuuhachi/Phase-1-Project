@@ -40,6 +40,16 @@ const leftArrow = document.getElementById("arrow-left")
 const rightArrow = document.getElementById("arrow-right")
 leftArrow.addEventListener("click", e => carouselBootcamps("left"))
 rightArrow.addEventListener("click", e => carouselBootcamps("right"))
+document.body.addEventListener("keydown", e => {
+    if (e.key === 'ArrowRight') {
+        carouselBootcamps("right")
+    }
+})
+document.body.addEventListener("keydown", e => {
+    if (e.key === 'ArrowLeft') {
+        carouselBootcamps("left")
+    }
+})
 const commentButton = document.getElementById('comment-section')
 commentButton.addEventListener("submit", e =>{
     e.preventDefault()
@@ -166,6 +176,7 @@ editButton.addEventListener("submit", e=>{
             //check if the current index position is the start of the array,
             //if so set the index position to the end of the array
             if (bootcampListPosition === 0) {
+                bootcampListPosition = (bootcampList.length - 1)
                 changeBootcamp()
             }
             else {
