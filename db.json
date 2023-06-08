@@ -24,21 +24,6 @@
   ],
   "comments": [
     {
-      "id": 1,
-      "bootcampid": 1,
-      "content": "Project week is awesome!"
-    },
-    {
-      "id": 2,
-      "bootcampid": 1,
-      "content": "Javascript, HTML, and CSS are super fun!"
-    },
-    {
-      "id": 3,
-      "bootcampid": 1,
-      "content": "I feel connected to the server"
-    },
-    {
       "id": 4,
       "bootcampid": 2,
       "content": "I didn't go here"
@@ -62,6 +47,11 @@
       "id": 8,
       "bootcampid": 3,
       "content": "she code on my stack till it's full"
+    },
+    {
+      "bootcampid": 1,
+      "content": "i love flatiron!",
+      "id": 9
     }
   ]
 }
