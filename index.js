@@ -43,21 +43,21 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
             document.querySelector("bootcamp-name").textContent = document.querySelector("form-name").value
             document.querySelector("image").src = document.querySelector("form-image").value
             e.target.reset()
+
+            const postBootcamp = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                },
+                body: JSON.stringify(bootcampList[bootcampListPosition].name, bootcampList[bootcampListPosition].image)
+            };
+            fetch(URL, postBootcamp)
+            .then(bootcampResp => bootcampResp.json())
+            .catch(function(error){
+                alert("Bad things!")
+            }
         })
-        //Post
-        const postBootcamp = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-            },
-            body: JSON.stringify(bootcampList[bootcampListPosition])
-        };
-        fetch(URL, postBootcamp)
-        .then(bootcampResp => bootcampResp.json())
-        .catch(function(error){
-            alert("Bad things!")
-        }
     }
     
     function editBootcamp(bootcamp) {
@@ -66,8 +66,21 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
             //when i click on edit, the name and url should appear in the input box for me to edit
             document.querySelector("form-name").textContent = bootcampList[bootcampListPosition].name
             document.querySelector("form-image").src = bootcampList[bootcampListPosition].image
-        })
-        //Patch
+
+            const postEdit = {
+                method: "PATCH",
+                headers:{
+                    "Content-Type":"application/json",
+                    "Accept":"application/json,"
+                }
+                body: JSON.stringify(bootcampList[bootcampListPosition].name, bootcampList[bootcampListPosition].image)
+            };
+            fetch(URL, postEdit)
+            .then(editResp=>editResp.json())
+            .catch(function(error){
+                alert("Bad things!")
+            });
+        });
     }
     
     function carouselBootcamps(direction) {
