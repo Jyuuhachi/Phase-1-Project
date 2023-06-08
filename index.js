@@ -92,7 +92,6 @@ editButton.addEventListener("submit", e=>{
     
     function addNewComment(comment) {
     //add new comment to the database using dataURL
-
     fetch(dataURL + '/comments', {method: 'POST',
         headers: { 
             "Content-Type":"application/json",
