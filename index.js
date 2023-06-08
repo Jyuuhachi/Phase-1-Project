@@ -1,11 +1,12 @@
 const dataURL = "http://localhost:3000"
-const bootcampList = []
-const commentsList = []
-let bootcampListPosition = 0
-
+const bootcampList = [] //locally stored array of our database's bootcamp objects
+const commentsList = [] //locally stored array of our database's comment objects
+let bootcampListPosition = 0 //variable to track current index position for our carousel
+//fetch our bootcamp object data and then display the bootcamp at index bootcampListPosition and it's comments on the page
 fetch(dataURL + '/bootcamps')
 .then(response => response.json())
 .then(data => {
+    //populate our bootcampList with the bootcamp object data we fetched
     for (i = 0; i <= (data.length - 1); i++) {
         bootcampList.push(data[i])
     }
@@ -16,10 +17,12 @@ fetch(dataURL + '/bootcamps')
     fetch(dataURL + '/comments')
     .then(returned => returned.json())
     .then(comments => {
+        //populate our commentsList with the comment object data we fetched
         for (i = 0; i <= (comments.length - 1); i++) {
             commentsList.push(comments[i])
         }
-    const commentList = []
+    const commentList = [] //create a list to hold the comments for the bootcamp we'll display on load
+        //populate commentList with the comments that correspond to the correct bootcamp
         for (i = 0; i <= (commentsList.length -1); i++) {
             if (commentsList[i].bootcampid === bootcampId) {
                 commentList.push(commentsList[i])
@@ -48,10 +51,11 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     function deleteComment(comment) {
         let deleteTarget
         const identifier = comment.target.getAttribute('identifier')
+        //for loop to compare HTML attribute with database to find the correct comment for deletion
         for (i = 0; i <= (commentsList.length -1); i++) {
             if ((commentsList[i].id).toString() === identifier) {
                 deleteTarget = commentsList[i].id
-                commentsList.splice(i, 1)
+                commentsList.splice(i, 1) //splice to remove the comment and index in the array
             }
         }
         fetch(dataURL + '/comments/' + deleteTarget.toString(), {
@@ -75,7 +79,14 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     }
     
     function carouselBootcamps(direction) {
+        /* function that is passed a direction in as a parameter moves through an index
+           in the corresponding direction. checks for where the index is in the array to
+           loop back to the "opposite end" of the array.
+           */
+       //check the direction
         if (direction === "left") {
+            //check if the current index position is the start of the array,
+            //if so set the index position to the end of the array
             if (bootcampListPosition === 0) {
                 bootcampListPosition = (bootcampList.length - 1)
                 const bootcampLogo = document.getElementById("image")
@@ -88,6 +99,7 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
                 const likes = bootcampList[bootcampListPosition].likes
                 renderLikes(likes)
                 const commentList = document.getElementById("comment-list")
+                //while loop to remove all comments from the DOM
                 while (commentList.firstChild) {
                     commentList.removeChild(commentList.firstChild)
                 }
@@ -107,6 +119,7 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
                 const likes = bootcampList[bootcampListPosition].likes
                 renderLikes(likes)
                 const commentList = document.getElementById("comment-list")
+                //while loop to remove all current comments displayed in the DOM
                 while (commentList.firstChild) {
                     commentList.removeChild(commentList.firstChild)
                 }
@@ -115,7 +128,10 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
                 name.textContent = bootcampList[bootcampListPosition].name
             }
         }
+        //check the direction
         if (direction === "right") {
+            //check if the current index position is the end of the array,
+            //if so set the index position to the start of the array
             if (bootcampListPosition === (bootcampList.length - 1)) {
                 bootcampListPosition = 0
                 const bootcampLogo = document.getElementById("image")
@@ -128,6 +144,7 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
                 const likes = bootcampList[bootcampListPosition].likes
                 renderLikes(likes)
                 const commentList = document.getElementById("comment-list")
+                //while loop to remove all comments from the DOM
                 while (commentList.firstChild) {
                     commentList.removeChild(commentList.firstChild)
                 }
@@ -147,6 +164,7 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
                 const likes = bootcampList[bootcampListPosition].likes
                 renderLikes(likes)
                 const commentList = document.getElementById("comment-list")
+                //while loop to remove all comments from the DOM
                 while (commentList.firstChild) {
                     commentList.removeChild(commentList.firstChild)
                 }
@@ -161,6 +179,9 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
     
     }
     function carouselGetComments() {
+        /* function that goes through the commentsList and finds the comments
+           that belong to the selected bootcamp
+        */
         const commentList = []
             for (x = 0; x <= (commentsList.length - 1); x++) {
                 if (commentsList[x].bootcampid === bootcampList[bootcampListPosition].id) {
