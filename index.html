@@ -2,17 +2,56 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>rateMyBootcamp</title>
-
+        <title>Rate MyBootCamp</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <script defer type="text/javascript" src="index.js">
+        </script>
     </head>
-
     <body>
-
+        <!--Title-->
+        <h1 id="page-title">Rate MyBootCamp</h1>
+        <form id="bootcamp-form">
+            <p>Bootcamp Name</p>
+            <input type="text" name="bootcamp-name" id="form-name" placeholder="Add a bootcamp...">
+            <p>Bootcamp Image URL</p>
+            <input type="text" name="bootcamp-image" id="form-image" placeholder="URL of logo image...">
+            <div id="edit-button">
+            <button class="form-buttons" id="edit" name="edit-button" type="submit">Edit Bootcamp</button>
+            </div>
+            <div id="submit-button">
+            <button class="form-buttons" id="submit" name="submit-button" type="submit">Add New Bootcamp</button>
+            </div>
+        </form>
+        <!--This image-container div holds the whole bootcamp card in its element-->
+        <div class="image-container">
+            <!--This image-card holds the key information about the bootcamp object-->
+            <div class="image-card">
+                <h2 id="bootcamp-name">Flatiron School</h2>
+                <div id="carousel">
+                <div id="arrow-left">
+                    <h3 class="arrows">⇦</h3>
+                </div>
+                <div>
+                    <img id="image" src="image-placeholder.jpg" alt="Title of Bootcamp">
+                </div>
+                <div id="arrow-right">
+                    <h3 class="arrows">⇨</h3>
+                </div>
+            </div>
+            <!--Below is the likes section-->
+            <div class="likes-section">
+                <span id="likes-count">0 likes</span>
+                <button id="likes-button">♥</button>
+            </div>
+            <!--Below is the comments section-->
+            <ul id="comment-list" class="comments">
+                
+            </ul>
+                <form id="comment-section" class="comment-form">
+                    <input type="text" name="comment-line" id="comment-line" class="comment-input" placeholder="Add a comment...">
+                    <button id="comment-button" class="comment-button" type="submit">Post</button>
+                </form>
+            </div>
+        </div>
     </body>
-
-
-
-
-
-
 </html>

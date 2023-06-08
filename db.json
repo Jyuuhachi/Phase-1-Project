@@ -1,0 +1,67 @@
+{
+  "bootcamps": [
+    {
+      "id": 1,
+      "name": "Flatiron School",
+      "likes": 145,
+      "comments": 3,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/FS_wiki.png/800px-FS_wiki.png"
+    },
+    {
+      "id": 2,
+      "name": "General Assembly",
+      "likes": 30,
+      "comments": 2,
+      "image": "General-Assembly-logo.png"
+    },
+    {
+      "id": 3,
+      "name": "Fullstack Academy",
+      "likes": 2,
+      "comments": 3,
+      "image": "fullstack-academy-logo-square-lg.jpg"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "bootcampid": 1,
+      "content": "Project week is awesome!"
+    },
+    {
+      "id": 2,
+      "bootcampid": 1,
+      "content": "Javascript, HTML, and CSS are super fun!"
+    },
+    {
+      "id": 3,
+      "bootcampid": 1,
+      "content": "I feel connected to the server"
+    },
+    {
+      "id": 4,
+      "bootcampid": 2,
+      "content": "I didn't go here"
+    },
+    {
+      "id": 5,
+      "bootcampid": 2,
+      "content": "They're in the flatiron building!"
+    },
+    {
+      "id": 6,
+      "bootcampid": 3,
+      "content": "Only taught me back-end pain..."
+    },
+    {
+      "id": 7,
+      "bootcampid": 3,
+      "content": "my front-end was never the same afterwards..."
+    },
+    {
+      "id": 8,
+      "bootcampid": 3,
+      "content": "she code on my stack till it's full"
+    }
+  ]
+}

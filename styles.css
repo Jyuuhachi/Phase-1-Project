@@ -1,21 +1,53 @@
-#page-title {
-
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
-#image-space {
+h3 {
+    position:relative;
+    top: 45%;
+
+}
+  
+body {
+    padding: 20px;
+    text-align: center;
+    background-color: #fafafa;
+}
+  
+#page-title {
+    margin-bottom: 20px;
+    font-family:"Times, Times New Roman, serif";
+    font-style:oblique;
+
+}
+  
+.image-container {
     width: 100%;
     display: flex;
     justify-content: center;
 }
-
-#image-card {
+  
+.image-card {
     width: 300px;
     border: 1px solid #00000020;
     border-radius: 2px;
     text-align: left;
     background-color: white;
 }
-
+#carousel {
+    display:flex;
+    justify-content:center;
+    width: 300px;
+}
+#image {
+    width: 260px;
+    border: 1px solid #00000020;
+    border-radius: 2px;
+    background-color: white;
+}
+  
 #bootcamp-name {
     text-align: left;
     padding: 15px 10px;
@@ -23,20 +55,20 @@
     font-weight: 600;
     color: #000000dd;
 }
-
-#likes-section {
+  
+.likes-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
 }
-
+  
 #likes-count {
     font-size: 0.9rem;
     font-weight: 600;
 }
-
-#like-button {
+  
+#likes-button {
     color: rgb(255, 127, 80);
     font-size: 1.5rem;
     border: none;
@@ -44,26 +76,27 @@
     transition: color 300ms;
     cursor: pointer;
 }
-
+  
 .comments {
     list-style-type: none;
     margin-left: 0;
     padding-left: 10px;
     font-size: 0.85rem;
 }
-
+  
 .comments li {
     margin: 2px 0;
     letter-spacing: 0.2px;
-  }
+    cursor: pointer;
+}
 .comment-form {
     width: 100%;
     border-top: 1px solid #00000020;
     padding: 10px;
     margin-top: 10px;
 }
-
-
+  
+  
   
 .comment-input {
     width: 83%;
@@ -95,15 +128,50 @@
 .comment-button:focus {
     outline: none;
 }
-
-.arrows {
-
+  
+#arrow-left {
+    width: 20px;
+    border: 1px solid #00000020;
+    border-radius: 2px;
+    text-align: justify;
+    background-color: white;
+    justify-content:left;
+    cursor: pointer;
+}
+  
+#arrow-right {
+    width: 20px;
+    border: 1px solid #00000020;
+    border-radius: 2px;
+    text-align: justify;
+    background-color: white;
+    justify-content:right;
+    cursor: pointer;
 }
 
 #edit-button {
-
+  display: block;
+  justify-content:center;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgb(92, 114, 238);
+  cursor: pointer;
+  transition: color 300ms;
 }
-
+  
 #submit-button {
+    display: block;
+    justify-content:center;
     
+}
+.form-buttons {
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgb(92, 114, 238);
+    cursor: pointer;
+    transition: color 300ms;
+    width:170px;
+    margin-top:5px;
 }
