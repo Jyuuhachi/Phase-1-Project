@@ -14,6 +14,10 @@ fetch(dataURL + '/bootcamps')
     const bootcampImage = bootcampList[0].image
     const bootcampDisplay = document.getElementById("image")
     bootcampDisplay["src"] = bootcampImage
+    const bootcampLikes = document.getElementById("likes-count")
+    bootcampLikes.textContent = `${bootcampList[0].likes} likes`
+    const bootcampName = document.getElementById('bootcamp-name')
+    bootcampName.textContent = bootcampList[0].name
     fetch(dataURL + '/comments')
     .then(returned => returned.json())
     .then(comments => {
@@ -21,14 +25,14 @@ fetch(dataURL + '/bootcamps')
         for (i = 0; i <= (comments.length - 1); i++) {
             commentsList.push(comments[i])
         }
-    const commentList = [] //create a list to hold the comments for the bootcamp we'll display on load
+        const commentList = [] //create a list to hold the comments for the bootcamp we'll display on load
         //populate commentList with the comments that correspond to the correct bootcamp
         for (i = 0; i <= (commentsList.length -1); i++) {
             if (commentsList[i].bootcampid === bootcampId) {
                 commentList.push(commentsList[i])
             }
         }
-    commentList.forEach(addComment)
+        commentList.forEach(addComment)
     })
     
     
@@ -43,26 +47,29 @@ const leftArrow = document.getElementById("arrow-left")
 const rightArrow = document.getElementById("arrow-right")
 leftArrow.addEventListener("click", e => carouselBootcamps("left"))
 rightArrow.addEventListener("click", e => carouselBootcamps("right"))
-    const likeButton = document.querySelector("#likes-button")
-    likeButton.addEventListener("click", (e)=>{
-        let numLikes = card.querySelector("#likes-count").textContent
-        numberLike = numLikes +1 
-        card.querySelector("#likes-count").textContent = `${numberLike} likes`
+const likeButton = document.querySelector("#likes-button")
+likeButton.addEventListener("click", updateLikes)
+const editButton = document.getElementById("bootcamp-form")
+editButton.addEventListener("submit", e=>{
+    e.preventDefault()
+    if (e.submitter.id === 'edit') {
+        editBootcamp(e)
+    }  
+    if (e.submitter.id === 'submit') {
+        addBootcamp(e)
+    }
 
-    })
+})
     
     function addComment(comment) {
           //create new li and setAttribute(identifier, idNum) and appendChild to ul on HTML with comment as it's textContent
-        document.querySelector('#comment-section').addEventListener("submit",event => {
-            event.preventDefault()
-            const comment=document.querySelector("#comment-line").value
-            const commentList=document.querySelector("#comment-list")
+            const commentList = document.getElementById('comment-list')
             const li=document.createElement('li')
-            li.textContent=comment
+            li.textContent=comment.content
+            li.setAttribute('identifier', comment.id)
+            li.setAttribute('bootcampid', bootcampList[bootcampListPosition].id)
             commentList.appendChild(li)
-            document.querySelector("#comment-form").reset()
-           })
-    }
+           }
     
     function deleteComment(comment) {
         let deleteTarget
@@ -93,74 +100,51 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
             document.querySelector("bootcamp-name").textContent = document.querySelector("form-name").value
             document.querySelector("image").src = document.querySelector("form-image").value
             e.target.reset()
-
+            const newBootcamp = {}
+            newBootcamp.name = e.target['bootcamp-name'].value
+            newBootcamp.image = e.target['image'].value
+            newBootcamp.comments = 0
+            newBootcamp.likes = 0
             const postBootcamp = {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
                 },
-                body: JSON.stringify(bootcampList[bootcampListPosition].name, bootcampList[bootcampListPosition].image)
+                body: JSON.stringify(newBootcamp)
             };
-            fetch(URL, postBootcamp)
+            fetch(dataURL + '/bootcamps', postBootcamp)
             .then(bootcampResp => bootcampResp.json())
             .catch(function(error){
                 alert("Bad things!")
-            }
+            })
         })
     }
     
-    function editBootcamp(bootcamp) {
-        const editButton = document.querySelector("#edit-button")
-        editButton.addEventListener("submit", ()=>{
+    function editBootcamp(event) {
+        console.log('proveme')
             //when i click on edit, the name and url should appear in the input box for me to edit
-            document.querySelector("form-name").textContent = bootcampList[bootcampListPosition].name
-            document.querySelector("form-image").src = bootcampList[bootcampListPosition].image
-
+            bootcampList[bootcampListPosition].name = event.target['bootcamp-name'].value
+            bootcampList[bootcampListPosition].image = event.target['bootcamp-image'].value
             const postEdit = {
                 method: "PATCH",
                 headers:{
                     "Content-Type":"application/json",
                     "Accept":"application/json",
-                }
-                body: JSON.stringify(bootcampList[bootcampListPosition].name, bootcampList[bootcampListPosition].image)
+                },
+                body: JSON.stringify({name:bootcampList[bootcampListPosition].name, image:bootcampList[bootcampListPosition].image})
             };
-            fetch(URL, postEdit)
+            fetch(dataURL + '/bootcamps/' + bootcampList[bootcampListPosition].id.toString(), postEdit)
             .then(editResp=>editResp.json())
             .catch(function(error){
                 alert("Bad things!")
             });
-        });
-    }
-function renderLikes(e){
-        let numLikes = card.querySelector("#likes-count").textContent
-        let numberLike = parseInt(numLikes) + 1
-        card.querySelector("#likes-count").textContent = `${numberLike} likes`
-}
+            const bootcampName = document.getElementById('bootcamp-name')
+            bootcampName.textContent = bootcampList[bootcampListPosition].name
+            const bootcampImage = document.getElementById('image')
+            bootcampImage.src = bootcampList[bootcampListPosition].img
+        }
 
-    function editBootcamp(bootcamp) {
-        const editButton = document.querySelector("#edit-button")
-        editButton.addEventListener("submit", ()=>{
-            //when i click on edit, the name and url should appear in the input box for me to edit
-            document.querySelector("form-name").textContent = bootcampList[bootcampListPosition].name
-            document.querySelector("form-image").src = bootcampList[bootcampListPosition].image
-
-            const postEdit = {
-                method: "PATCH",
-                headers:{
-                    "Content-Type":"application/json",
-                    "Accept":"application/json",
-                }
-                body: JSON.stringify(bootcampList[bootcampListPosition].name, bootcampList[bootcampListPosition].image)
-            };
-            fetch(URL, postEdit)
-            .then(editResp=>editResp.json())
-            .catch(function(error){
-                alert("Bad things!")
-            });
-        });
-    }
-    
     function carouselBootcamps(direction) {
         /* function that is passed a direction in as a parameter moves through an index
            in the corresponding direction. checks for where the index is in the array to
@@ -180,7 +164,7 @@ function renderLikes(e){
                 imageTextbox['placeholder'] = bootcampList[bootcampListPosition].image
                 const comments = carouselGetComments()
                 const likes = bootcampList[bootcampListPosition].likes
-                renderLikes(likes)
+                renderLikes()
                 const commentList = document.getElementById("comment-list")
                 //while loop to remove all comments from the DOM
                 while (commentList.firstChild) {
@@ -200,7 +184,7 @@ function renderLikes(e){
                 imageTextbox['placeholder'] = bootcampList[bootcampListPosition].image
                 const comments = carouselGetComments()
                 const likes = bootcampList[bootcampListPosition].likes
-                renderLikes(likes)
+                renderLikes()
                 const commentList = document.getElementById("comment-list")
                 //while loop to remove all current comments displayed in the DOM
                 while (commentList.firstChild) {
@@ -225,7 +209,7 @@ function renderLikes(e){
                 imageTextbox['placeholder'] = bootcampList[bootcampListPosition].image
                 const comments = carouselGetComments()
                 const likes = bootcampList[bootcampListPosition].likes
-                renderLikes(likes)
+                renderLikes()
                 const commentList = document.getElementById("comment-list")
                 //while loop to remove all comments from the DOM
                 while (commentList.firstChild) {
@@ -245,7 +229,7 @@ function renderLikes(e){
                 imageTextbox['placeholder'] = bootcampList[bootcampListPosition].image
                 const comments = carouselGetComments()
                 const likes = bootcampList[bootcampListPosition].likes
-                renderLikes(likes)
+                renderLikes()
                 const commentList = document.getElementById("comment-list")
                 //while loop to remove all comments from the DOM
                 while (commentList.firstChild) {
@@ -257,27 +241,24 @@ function renderLikes(e){
             }
         }
     }
-
-function renderLikes(e){
-        let numLikes = card.querySelector("#likes-count").textContent
-        let numberLike = parseInt(numLikes) + 1
-        card.querySelector("#likes-count").textContent = `${numberLike} likes`
+function renderLikes(){
+        const newLikes = document.querySelector("#likes-count")
+        newLikes.textContent = `${bootcampList[bootcampListPosition].likes} likes`
 }
     
 function updateLikes(){ 
-    const button = document.querySelector("#likes-button")
-    button.addEventListener("click", renderLikes(e))
+    bootcampList[bootcampListPosition].likes += 1
+    renderLikes()
     const postLikes = {
         method: "PATCH",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
             "Accept": "application/json",
-        }
-        body: JSON.stringify({
-            bootcampList[bootcamplistPosiition].likes:"",
+        },
+        body: JSON.stringify({likes:bootcampList[bootcampListPosition].likes
         }),
     };
-    fetch(URL, postLikes)
+    fetch(dataURL + '/bootcamps/' + bootcampList[bootcampListPosition].id.toString(), postLikes)
     .then(likeResponse=>likeResponse.json())
     .catch(function(error){
         alert("Bad things!");
