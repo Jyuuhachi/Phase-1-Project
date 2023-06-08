@@ -98,7 +98,7 @@ editButton.addEventListener("submit", e=>{
     }
     
     function addNewComment(comment) {
-    //add new comment to the database using dataURL + bootcampList[bootcampListPosition].id
+    //add new comment to the database using dataURL
 
     fetch(dataURL + '/comments', {method: 'POST',
         headers: { 
@@ -106,7 +106,6 @@ editButton.addEventListener("submit", e=>{
             "Accept":"application/json",
         },
         body: JSON.stringify(comment)
-            
     }).then(response=> response.json())
     .then(returnedComment => {
     commentsList.push(returnedComment)

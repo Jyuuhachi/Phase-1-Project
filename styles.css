@@ -87,6 +87,7 @@ body {
 .comments li {
     margin: 2px 0;
     letter-spacing: 0.2px;
+    cursor: pointer;
 }
 .comment-form {
     width: 100%;
