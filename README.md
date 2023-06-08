@@ -6,3 +6,7 @@ apparently trying to set protection measures on brancches in a private repositor
 This is a branch test
 
 testing pushing to test branch
+
+unicode for buttons
+arrows: ⇦⇨
+likes: ♥
