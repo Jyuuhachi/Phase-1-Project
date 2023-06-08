@@ -47,6 +47,13 @@ const leftArrow = document.getElementById("arrow-left")
 const rightArrow = document.getElementById("arrow-right")
 leftArrow.addEventListener("click", e => carouselBootcamps("left"))
 rightArrow.addEventListener("click", e => carouselBootcamps("right"))
+const commentButton = document.getElementById('comment-section')
+commentButton.addEventListener("submit", e =>{
+    e.preventDefault()
+    const newComment = {bootcampid: bootcampList[bootcampListPosition].id, content: e.target['comment-line'].value}
+    addNewComment(newComment)
+    e.target.reset()
+})
 const likeButton = document.querySelector("#likes-button")
 likeButton.addEventListener("click", updateLikes)
 const editButton = document.getElementById("bootcamp-form")
@@ -68,6 +75,7 @@ editButton.addEventListener("submit", e=>{
             li.textContent=comment.content
             li.setAttribute('identifier', comment.id)
             li.setAttribute('bootcampid', bootcampList[bootcampListPosition].id)
+            li.addEventListener("click", deleteComment)
             commentList.appendChild(li)
            }
     
@@ -91,8 +99,21 @@ editButton.addEventListener("submit", e=>{
     
     function addNewComment(comment) {
     //add new comment to the database using dataURL + bootcampList[bootcampListPosition].id
-    }
-    
+
+    fetch(dataURL + '/comments', {method: 'POST',
+        headers: { 
+            "Content-Type":"application/json",
+            "Accept":"application/json",
+        },
+        body: JSON.stringify(comment)
+            
+    }).then(response=> response.json())
+    .then(returnedComment => {
+    commentsList.push(returnedComment)
+    addComment(returnedComment)
+    })
+}
+
     function addBootcamp(){
         const submitButton = document.querySelector("#submit-button")
         submitButton.addEventListener("submit",(e)=>{
