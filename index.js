@@ -71,7 +71,7 @@ rightArrow.addEventListener("click", e => carouselBootcamps("right"))
                 method: "PATCH",
                 headers:{
                     "Content-Type":"application/json",
-                    "Accept":"application/json,"
+                    "Accept":"application/json",
                 }
                 body: JSON.stringify(bootcampList[bootcampListPosition].name, bootcampList[bootcampListPosition].image)
             };
