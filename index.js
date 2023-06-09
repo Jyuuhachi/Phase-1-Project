@@ -182,6 +182,7 @@ editButton.addEventListener("submit", e=>{
             //check if the current index position is the start of the array,
             //if so set the index position to the end of the array
             if (bootcampListPosition === 0) {
+                bootcampListPosition = (bootcampList.length - 1)
                 changeBootcamp()
             }
             else {
