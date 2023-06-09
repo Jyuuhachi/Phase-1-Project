@@ -91,7 +91,7 @@ editButton.addEventListener("submit", e=>{
     }
     
     function addNewComment(comment) {
-    //add new comment to the database using dataURL and then pass the response from fetch to
+    //add new comment to the database using dataURL and then pass the response from fetch to addComment
 
 }
 
