@@ -90,10 +90,26 @@ editButton.addEventListener("submit", e=>{
 
     }
     
-    function addNewComment(comment) {
-    //add new comment to the database using dataURL and then pass the response from fetch to addComment
 
-}
+        //add new comment to the database using dataURL and then pass the response from fetch to addComment
+        function addNewComment(comment) {
+           fetch(dataURL+"/comments", {method:"POST",
+           headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"},
+            body:JSON.stringify(comment)
+        })
+            .then (resp=>resp.json())
+                .then(updatedComment=>{
+                    addComment(updatedComment)
+                    commentsList.push(updatedComment)
+                })            
+
+        }
+          
+    
+    
+
 
     function addBootcamp(){
         const submitButton = document.querySelector("#submit-button")

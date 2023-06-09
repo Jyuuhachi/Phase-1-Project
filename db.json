@@ -62,6 +62,16 @@
       "id": 8,
       "bootcampid": 3,
       "content": "she code on my stack till it's full"
+    },
+    {
+      "bootcampid": 1,
+      "content": "i hated this school.",
+      "id": 9
+    },
+    {
+      "bootcampid": 1,
+      "content": "i loved this sckool",
+      "id": 10
     }
   ]
 }
