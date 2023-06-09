@@ -35,11 +35,21 @@ fetch(dataURL + '/bootcamps')
         commentList.forEach(addComment)
     })
 })
-
+//onkeypress
 const leftArrow = document.getElementById("arrow-left")
 const rightArrow = document.getElementById("arrow-right")
 leftArrow.addEventListener("click", e => carouselBootcamps("left"))
 rightArrow.addEventListener("click", e => carouselBootcamps("right"))
+const container = document.querySelector("#image-container")
+document.addEventListener("keydown",(e)=>{
+    const key = e.key;
+    if (key === "ArrowRight"){
+        carouselBootcamps("right")
+    }
+    else if(key === "ArrowLeft"){
+        carouselBootcamps("left")
+    }
+})
 const commentButton = document.getElementById('comment-section')
 commentButton.addEventListener("submit", e =>{
     e.preventDefault()
