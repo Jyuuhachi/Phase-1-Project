@@ -10,3 +10,9 @@ testing pushing to test branch
 unicode for buttons
 arrows: ⇦⇨
 likes: ♥
+
+Run this command to get the backend (json server) started:
+
+```sh
+json-server --watch db.json --routes routes.json
+```
